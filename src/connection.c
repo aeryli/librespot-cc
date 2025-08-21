@@ -2362,7 +2362,7 @@ msg_http_send(struct http_response *hres, struct http_request *hreq, struct http
 
   hreq->user_agent = sp_sysinfo.client_name;
 
-  sp_cb.logmsg("Making http request to %s\n", hreq->url);
+//  sp_cb.logmsg("Making http request to %s\n", hreq->url);
 
   ret = http_request(hres, hreq, hses);
   if (ret < 0)
