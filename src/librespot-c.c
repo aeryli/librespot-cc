@@ -334,6 +334,7 @@ incoming_tcp_cb(int fd, short what, void *arg)
   struct sp_session *session = arg;
   struct sp_connection *conn = &session->conn;
   struct sp_message msg = { .type = SP_MSG_TYPE_TCP };
+  struct timeval sp_idle_tv = { SP_AP_DISCONNECT_SECS, 0 };
   int ret;
 
   if (what == EV_READ)
@@ -391,6 +392,9 @@ incoming_tcp_cb(int fd, short what, void *arg)
 	event_del(conn->timeout_ev);
 	goto error;
     }
+
+  // Reset the disconnect timer
+  event_add(conn->idle_ev, &sp_idle_tv);
 
   msg_clear(&msg);
   return;
