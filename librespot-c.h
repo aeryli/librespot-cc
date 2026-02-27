@@ -56,7 +56,7 @@ struct sp_callbacks
   void (*tcp_disconnect)(int fd);
 
   // Optional - set name of thread
-  void (*thread_name_set)(pthread_t thread);
+  void (*thread_name_set)(void);
 
   // Debugging
   void (*hexdump)(const char *msg, uint8_t *data, size_t data_len);
