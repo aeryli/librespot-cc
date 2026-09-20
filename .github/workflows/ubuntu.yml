@@ -30,4 +30,9 @@ jobs:
       run: make distcheck
     - name: ls
       run: ls
+    - name: Upload Current Directory as Artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: current-directory-zip
+        path: .
 
