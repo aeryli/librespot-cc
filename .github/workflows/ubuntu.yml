@@ -29,7 +29,9 @@ jobs:
     - name: make distcheck
       run: make distcheck
     - name: ls
-      run: ls
+      run: |
+        ls
+        cd ..
     - name: Upload Current Directory as Artifact
       uses: actions/upload-artifact@v4
       with:
